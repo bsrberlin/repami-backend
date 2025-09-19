@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_page_components_collapses",
+  "info": {
+    "displayName": "Collapse",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Frage": {
+      "type": "string"
+    },
+    "Antwort": {
+      "type": "richtext"
+    }
+  }
+}

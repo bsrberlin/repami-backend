@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_startpage_anleitung_sektions",
+  "info": {
+    "displayName": "Anleitung-Sektion",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Beschreibungstext": {
+      "type": "text"
+    },
+    "Schritt1": {
+      "type": "text"
+    },
+    "Schritt2": {
+      "type": "text"
+    },
+    "Schritt3": {
+      "type": "text"
+    },
+    "Titel": {
+      "type": "string"
+    },
+    "Schritt1Titel": {
+      "type": "string"
+    },
+    "Schritt2Titel": {
+      "type": "string"
+    },
+    "Schritt3Titel": {
+      "type": "string"
+    }
+  }
+}

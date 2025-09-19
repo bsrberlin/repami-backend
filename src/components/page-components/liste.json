@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_page_components_listes",
+  "info": {
+    "displayName": "Liste",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Stichpunkt": {
+      "type": "string"
+    }
+  }
+}

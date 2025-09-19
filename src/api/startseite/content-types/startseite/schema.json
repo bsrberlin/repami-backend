@@ -1,0 +1,80 @@
+{
+  "kind": "collectionType",
+  "collectionName": "startseites",
+  "info": {
+    "singularName": "startseite",
+    "pluralName": "startseites",
+    "displayName": "Startseite",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "Header": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "header.header-sektion"
+    },
+    "Anleitung": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "startpage.anleitung-sektion"
+    },
+    "Reperatur": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "startpage.reperatur-sektion"
+    },
+    "Gruende": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "startpage.gruende-sektion"
+    },
+    "FAQ": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "startpage.faq-sektion"
+    },
+    "Mitmachen": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "startpage.mitmachen-sektion"
+    }
+  }
+}

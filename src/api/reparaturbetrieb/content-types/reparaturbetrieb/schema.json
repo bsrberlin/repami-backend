@@ -1,0 +1,119 @@
+{
+  "kind": "collectionType",
+  "collectionName": "reparaturbetriebs",
+  "info": {
+    "singularName": "reparaturbetrieb",
+    "pluralName": "reparaturbetriebs",
+    "displayName": "Reparaturbetrieb",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "createdByReaperaturbetrieb": {
+      "type": "boolean",
+      "default": false
+    },
+    "Name": {
+      "type": "string",
+      "required": true
+    },
+    "CompanyNo": {
+      "type": "string",
+      "required": true
+    },
+    "Image": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "Description": {
+      "type": "text",
+      "required": true
+    },
+    "Address": {
+      "type": "string",
+      "required": true
+    },
+    "PLZ": {
+      "type": "biginteger",
+      "unique": false,
+      "required": true
+    },
+    "Location": {
+      "type": "string",
+      "required": true
+    },
+    "URL": {
+      "type": "string"
+    },
+    "EMail": {
+      "type": "string",
+      "required": true
+    },
+    "Telefone": {
+      "type": "string",
+      "required": true
+    },
+    "OpeningHours": {
+      "type": "string",
+      "required": true
+    },
+    "MapLocation": {
+      "type": "customField",
+      "customField": "plugin::location-field.location"
+    },
+    "BrandsandModels": {
+      "type": "string"
+    },
+    "Services": {
+      "type": "text",
+      "required": true
+    },
+    "Parking": {
+      "type": "string",
+      "required": false
+    },
+    "PublicTransport": {
+      "type": "string",
+      "required": false
+    },
+    "product_categories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product-category.product-category"
+    },
+    "internal_id": {
+      "type": "string"
+    },
+    "Languages": {
+      "type": "string"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "reparaturbetrieb"
+    },
+    "finalSend": {
+      "type": "boolean",
+      "default": false
+    },
+    "sendMail": {
+      "type": "boolean",
+      "default": false
+    },
+    "Mobile": {
+      "type": "string"
+    },
+    "updateMail": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

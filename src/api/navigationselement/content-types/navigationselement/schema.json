@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "navigationselements",
+  "info": {
+    "singularName": "navigationselement",
+    "pluralName": "navigationselements",
+    "displayName": "Navigationselement",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "Title": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "Link": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    }
+  }
+}

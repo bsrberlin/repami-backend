@@ -1,0 +1,55 @@
+{
+  "kind": "collectionType",
+  "collectionName": "reparaturcafes",
+  "info": {
+    "singularName": "reparaturcafe",
+    "pluralName": "reparaturcafes",
+    "displayName": "Reparaturcafe",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string"
+    },
+    "City": {
+      "type": "string"
+    },
+    "PostalCode": {
+      "type": "string"
+    },
+    "Street": {
+      "type": "string"
+    },
+    "Street2": {
+      "type": "string"
+    },
+    "Landingpage": {
+      "type": "string"
+    },
+    "logoUrl": {
+      "type": "string"
+    },
+    "Coordinates": {
+      "type": "customField",
+      "customField": "plugin::location-field.location"
+    },
+    "ExternImportId": {
+      "type": "string"
+    },
+    "product_categories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product-category.product-category"
+    },
+    "internal_id": {
+      "type": "string"
+    },
+    "NextEvent": {
+      "type": "date"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "product_main_categories",
+  "info": {
+    "singularName": "product-main-category",
+    "pluralName": "product-main-categories",
+    "displayName": "ProductMainCategory",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Label": {
+      "type": "string"
+    },
+    "Notes": {
+      "type": "text"
+    }
+  }
+}

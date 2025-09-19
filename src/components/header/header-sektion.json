@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_header_header_sektions",
+  "info": {
+    "displayName": "Header-Sektion",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Slogan": {
+      "type": "text",
+      "required": true
+    },
+    "Text": {
+      "type": "text",
+      "required": true
+    },
+    "Image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "ImageAltText": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

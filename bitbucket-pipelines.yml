@@ -1,0 +1,26 @@
+image: atlassian/default-image:4
+
+definitions:
+  services:
+    4m-memory:
+      memory: 3072
+      type: docker
+  steps:
+    - step: &Build
+        name: Build Image
+        services: [4m-memory]
+        script:
+          - docker build --build-arg STRAPI_ADMIN_BACKEND_URL=$STRAPI_ADMIN_BACKEND_URL -t registry.digitalklang.de/bsr/$IMAGE_NAME:$BITBUCKET_BUILD_NUMBER -t registry.digitalklang.de/bsr/$IMAGE_NAME:latest .
+          - docker login -u $REGISTRY_USR -p $REGISTRY_PWD registry.digitalklang.de
+          - docker push registry.digitalklang.de/bsr/$IMAGE_NAME --all-tags
+
+pipelines:
+  branches:        
+    main:
+      - step:
+          <<: *Build
+          deployment: Production
+    develop:
+      - step:
+          <<: *Build
+          deployment: Development

@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_startpage_faq_sektions",
+  "info": {
+    "displayName": "FAQ-Sektion"
+  },
+  "options": {},
+  "attributes": {
+    "FAQ": {
+      "type": "component",
+      "repeatable": true,
+      "component": "page-components.collapse"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_startpage_reperatur_sektions",
+  "info": {
+    "displayName": "Reperatur-Sektion",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "TitelLinks": {
+      "type": "string"
+    },
+    "TitelRechts": {
+      "type": "string"
+    },
+    "UntertitelLinks": {
+      "type": "string"
+    },
+    "UnterTitelRechts": {
+      "type": "string"
+    },
+    "GrundStichpunktRechts": {
+      "type": "component",
+      "repeatable": true,
+      "component": "page-components.liste"
+    },
+    "GrundStichpunktLinks": {
+      "type": "component",
+      "repeatable": true,
+      "component": "page-components.liste"
+    }
+  }
+}

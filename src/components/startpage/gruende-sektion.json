@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_startpage_gruende_sektions",
+  "info": {
+    "displayName": "Gruende-Sektion",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Titel": {
+      "type": "string"
+    },
+    "Beschreibungstext": {
+      "type": "text"
+    },
+    "Grund": {
+      "type": "component",
+      "repeatable": true,
+      "component": "page-components.karussell"
+    }
+  }
+}

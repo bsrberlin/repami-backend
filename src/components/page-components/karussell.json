@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_page_components_karussells",
+  "info": {
+    "displayName": "Karussell",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Karusellkarte": {
+      "type": "string",
+      "maxLength": 99
+    },
+    "Icon": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "IconAltText": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_startpage_mitmachen_sektions",
+  "info": {
+    "displayName": "Mitmachen-Sektion"
+  },
+  "options": {},
+  "attributes": {
+    "Titel": {
+      "type": "string"
+    },
+    "Beschreibungstext": {
+      "type": "text"
+    }
+  }
+}
