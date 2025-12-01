@@ -27,22 +27,22 @@ jobs:
         run: |
           pwd
           ls -a
-          echo "HOST=${{ secrets.HOST }}" >> .env
-          echo "PORT=${{ secrets.PORT }}" >> .env
-          echo "APP_KEYS=${{ secrets.APP_KEYS }}" >> .env
-          echo "API_TOKEN_SALT=${{ secrets.API_TOKEN_SALT }}" >> .env
-          echo "ADMIN_JWT_SECRET=${{ secrets.ADMIN_JWT_SECRET }}" >> .env
-          echo "TRANSFER_TOKEN_SALT=${{ secrets.TRANSFER_TOKEN_SALT }}" >> .env
-          echo "JWT_SECRET=${{ secrets.JWT_SECRET }}" >> .env
-          echo "STRAPI_URL=${{ secrets.STRAPI_ADMIN_BACKEND_URL }}" >> .env
-          echo "FRONTEND_URL=${{ secrets.FRONTEND_URL }}" >> .env
-          echo "DATABASE_CLIENT=${{ secrets.DATABASE_CLIENT }}" >> .env
-          echo "DATABASE_HOST=${{ secrets.DATABASE_HOST }}" >> .env
-          echo "DATABASE_NAME=${{ secrets.DATABASE_NAME }}" >> .env
-          echo "DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }}" >> .env
-          echo "DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }}" >> .env
-          echo "DATABASE_SSL=true" >> .env
-          echo "SYNC_CAFES_CRON=DAILY" >> .env
+          echo HOST=${{ secrets.HOST }} >> .env
+          echo PORT=${{ secrets.PORT }} >> .env
+          echo APP_KEYS=${{ secrets.APP_KEYS }} >> .env
+          echo API_TOKEN_SALT=${{ secrets.API_TOKEN_SALT }} >> .env
+          echo ADMIN_JWT_SECRET=${{ secrets.ADMIN_JWT_SECRET }} >> .env
+          echo TRANSFER_TOKEN_SALT=${{ secrets.TRANSFER_TOKEN_SALT }} >> .env
+          echo JWT_SECRET=${{ secrets.JWT_SECRET }} >> .env
+          echo STRAPI_URL=${{ secrets.STRAPI_ADMIN_BACKEND_URL }} >> .env
+          echo FRONTEND_URL=${{ secrets.FRONTEND_URL }} >> .env
+          echo DATABASE_CLIENT=${{ secrets.DATABASE_CLIENT }} >> .env
+          echo DATABASE_HOST=${{ secrets.DATABASE_HOST }} >> .env
+          echo DATABASE_NAME=${{ secrets.DATABASE_NAME }} >> .env
+          echo DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }} >> .env
+          echo DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }} >> .env
+          echo DATABASE_SSL=true >> .env
+          echo SYNC_CAFES_CRON=DAILY >> .env
           ls -a
           cat .env
 
