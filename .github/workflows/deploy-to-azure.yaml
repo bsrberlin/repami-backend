@@ -1,0 +1,53 @@
+name: Build and deploy repami-backend
+
+on:
+  push:
+    branches:
+      - deploy/dev
+  workflow_dispatch:
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    environment:
+      name: ${{ github.ref == 'refs/heads/deploy/prod' && 'prod' || github.ref == 'refs/heads/deploy/dev' && 'dev' || 'dev'}}
+
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v6
+
+      - name: "Log in to Azure Container Registry"
+        uses: azure/docker-login@v2
+        with:
+          login-server: ${{ secrets.CONTAINER_REGISTRY_LOGIN_SERVER }}
+          username: ${{ secrets.SERVICE_PRINCIPAL_APP_ID }}
+          password: ${{ secrets.SERVICE_PRINCIPAL_PASSWORD }}
+
+      - name: "Create and fill .env"
+        run: |
+          echo "HOST=${{ secrets.HOST }}" >> .env
+          echo "PORT=${{ secrets.PORT }}" >> .env
+          echo "APP_KEYS=${{ secrets.APP_KEYS }}" >> .env
+          echo "API_TOKEN_SALT=${{ secrets.API_TOKEN_SALT }}" >> .env
+          echo "ADMIN_JWT_SECRET=${{ secrets.ADMIN_JWT_SECRET }}" >> .env
+          echo "TRANSFER_TOKEN_SALT=${{ secrets.TRANSFER_TOKEN_SALT }}" >> .env
+          echo "JWT_SECRET=${{ secrets.JWT_SECRET }}" >> .env
+          echo "STRAPI_URL=${{ secrets.STRAPI_ADMIN_BACKEND_URL }}" >> .env
+          echo "FRONTEND_URL=${{ secrets.FRONTEND_URL }}" >> .env
+          echo "DATABASE_CLIENT=${{ secrets.DATABASE_CLIENT }}" >> .env
+          echo "DATABASE_HOST=${{ secrets.DATABASE_HOST }}" >> .env
+          echo "DATABASE_NAME=${{ secrets.DATABASE_NAME }}" >> .env
+          echo "DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }}" >> .env
+          echo "DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }}" >> .env
+          echo "DATABASE_SSL=true" >> .env
+          echo "SYNC_CAFES_CRON=DAILY" >> .env
+
+      - name: "Build and push image"
+        uses: docker/build-push-action@v6
+        with:
+          push: true
+          tags: |
+            ${{ secrets.CONTAINER_REGISTRY_LOGIN_SERVER }}/repami-backend:${{ github.sha }}
+            ${{ secrets.CONTAINER_REGISTRY_LOGIN_SERVER }}/repami-backend:latest
+          build-args: |
+            STRAPI_ADMIN_BACKEND_URL=${{ secrets.STRAPI_ADMIN_BACKEND_URL }}
