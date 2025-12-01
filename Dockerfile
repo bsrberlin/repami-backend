@@ -8,11 +8,13 @@ ENV NODE_ENV=production
 
 WORKDIR /opt/
 COPY package.json ./
+COPY .env ./
 RUN npm install -g node-gyp
 RUN npm install --production
 ENV PATH /opt/node_modules/.bin:$PATH
 WORKDIR /opt/app
 COPY . .
+COPY .env ./
 RUN npm run build
 
 ## Serve Stage
