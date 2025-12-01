@@ -44,6 +44,7 @@ jobs:
           echo "DATABASE_SSL=true" >> .env
           echo "SYNC_CAFES_CRON=DAILY" >> .env
           ls -a
+          cat .env
 
       - name: "Build and push image"
         uses: docker/build-push-action@v6
