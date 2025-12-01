@@ -25,8 +25,6 @@ jobs:
 
       - name: "Create and fill .env"
         run: |
-          pwd
-          ls -a
           echo HOST=${{ secrets.HOST }} >> .env
           echo PORT=${{ secrets.PORT }} >> .env
           echo APP_KEYS=${{ secrets.APP_KEYS }} >> .env
@@ -43,9 +41,9 @@ jobs:
           echo DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }} >> .env
           echo DATABASE_SSL=true >> .env
           echo SYNC_CAFES_CRON=DAILY >> .env
-          ls -a
-          cat .env
-          ls -a ../
+
+      - name: "Check if .env is present"
+        run: ls -a .
 
       - name: "Build and push image"
         uses: docker/build-push-action@v6
