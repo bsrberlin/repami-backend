@@ -45,6 +45,10 @@ jobs:
       - name: "Check if .env is present"
         run: ls -a .
 
+      - name: "Build and push image test"
+        run: |
+          docker build --build-arg STRAPI_ADMIN_BACKEND_URL="${{ secrets.STRAPI_ADMIN_BACKEND_URL }}" -t ${{ secrets.CONTAINER_REGISTRY_LOGIN_SERVER }}/repami-backend:latest -t ${{ secrets.CONTAINER_REGISTRY_LOGIN_SERVER }}/repami-backend:${{ github.sha }} .
+
       - name: "Build and push image"
         uses: docker/build-push-action@v6
         with:
