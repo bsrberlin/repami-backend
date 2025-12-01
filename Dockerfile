@@ -14,6 +14,8 @@ RUN npm install --production
 ENV PATH /opt/node_modules/.bin:$PATH
 WORKDIR /opt/app
 COPY . .
+RUN ls -a
+RUN pwd
 COPY .env ./
 RUN npm run build
 
