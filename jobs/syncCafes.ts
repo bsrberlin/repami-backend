@@ -1,8 +1,9 @@
+import { Any } from "@strapi/types/dist/types/core/attributes/common";
+import type * as Data from "@strapi/types/dist/modules/entity-service/params/data";
 import * as _ from "lodash";
-import type { Data } from "@strapi/strapi";
 
-type Profil = Partial<Data.ContentType<"api::reparaturcafe.reparaturcafe">>;
-type Category = Partial<Data.ContentType<"api::product-category.product-category">>;
+type Profil = Partial<Data.Input<"api::reparaturcafe.reparaturcafe">>;
+type Category = Partial<Data.Input<"api::product-category.product-category">>;
 
 const importDate = new Date();
 
@@ -202,7 +203,6 @@ function normalizeProfileBeforeCompare(obj: Profil) {
   obj = _.cloneDeep(obj);
   delete obj.publishedAt;
   delete obj.id;
-  delete obj.documentId;
   delete obj.logoUrl;
   delete obj.createdBy;
   delete obj.updatedBy;
@@ -228,13 +228,14 @@ export async function syncCafes(): Promise<void> {
   const srcReparaturcafes = (await fetchReparaturcafes()).workshops;
   let c = srcReparaturcafes.length;
   console.log(`SYNC ${c} REPARATURCAFES ${new Date()}`);
-  const dstReparaturcafes = await strapi.documents(
-    "api::reparaturcafe.reparaturcafe"
-  ).findMany({ populate: "*" });
+  const dstReparaturcafes = await strapi.entityService.findMany(
+    "api::reparaturcafe.reparaturcafe",
+    { populate: "*" }
+  );
 
-  const categories = await strapi.documents(
+  const categories = await strapi.entityService.findMany(
     "api::product-category.product-category"
-  ).findMany();
+  );
   let listOfAllSrcReparaturCafeId: Array<string> = []
   for (let srcReparaturcafe of srcReparaturcafes) {
     c--;
@@ -246,18 +247,19 @@ export async function syncCafes(): Promise<void> {
     if (reparaturcafe) {
       if (existingReparaturcafe) {
         if (hasChanges(reparaturcafe, existingReparaturcafe)) {
-          reparaturcafe.documentId = existingReparaturcafe.documentId;
+          reparaturcafe.id = existingReparaturcafe.id;
           console.log(`UPDATE ${c + 1}: ${srcReparaturcafe.name}`);
-          await strapi.documents(
-            "api::reparaturcafe.reparaturcafe"
-          ).update({
-            documentId: existingReparaturcafe.documentId,
-            data: reparaturcafe,
-          });
+          await strapi.entityService.update(
+            "api::reparaturcafe.reparaturcafe",
+            reparaturcafe.id,
+            {
+              data: reparaturcafe,
+            }
+          );
         }
       } else {
         console.log(`CREATE ${c + 1}: ${srcReparaturcafe.name}`);
-        await strapi.documents("api::reparaturcafe.reparaturcafe").create({
+        await strapi.entityService.create("api::reparaturcafe.reparaturcafe", {
           data: reparaturcafe,
         });
       }
@@ -267,18 +269,18 @@ export async function syncCafes(): Promise<void> {
   console.log("Start removing of DEAD reaparaturcafes");
   let counter = 0
 
-  const updatedDstReparaturcafes = await strapi.documents(
-    "api::reparaturcafe.reparaturcafe"
-  ).findMany({ populate: "*" });
+  const updatedDstReparaturcafes = await strapi.entityService.findMany(
+    "api::reparaturcafe.reparaturcafe",
+    { populate: "*" }
+  );
   for (let updatedDstReparaturcafe of updatedDstReparaturcafes) {
 
     if (!listOfAllSrcReparaturCafeId.includes(updatedDstReparaturcafe.ExternImportId)) {
       console.log("DELETE : " + updatedDstReparaturcafe.Name + " with ExternId: " + updatedDstReparaturcafe.ExternImportId);
-      await strapi.documents(
-        "api::reparaturcafe.reparaturcafe"
-      ).delete({
-        documentId: updatedDstReparaturcafe.documentId
-      });
+      await strapi.entityService.delete(
+        "api::reparaturcafe.reparaturcafe",
+        updatedDstReparaturcafe.id
+      );
       counter++
     }
   }
