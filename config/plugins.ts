@@ -5,8 +5,8 @@ export default ({ env }) => ({
       dsn: env("SENTRY_DSN"),
     },
   },
-  "strapi-import-export": {
-    enabled: false,
+  "import-export-entries": {
+    enabled: true,
     config: {
       // See `Config` section.
     },
