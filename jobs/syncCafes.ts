@@ -41,8 +41,14 @@ const config = {
 };
 
 async function fetchReparaturcafes(): Promise<WorkshopResponse> {
+  const apiKey = process.env.SYNC_CAFES_API_KEY;
+  if (!apiKey) {
+    throw new Error("SYNC_CAFES_API_KEY is not set");
+  }
+
   const headers = {
     "content-type": "application/json",
+    "authorization": `Bearer ${apiKey}`,
   };
   const request = await fetch(config.sourceUrl, {
     method: "GET",
