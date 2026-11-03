@@ -1,5 +1,5 @@
 ## Build Stage
-FROM node:20-alpine as build
+FROM node:20-alpine AS build
 
 ARG STRAPI_ADMIN_BACKEND_URL
 
@@ -7,10 +7,10 @@ RUN apk update && apk add --no-cache build-base gcc autoconf automake zlib-dev l
 ENV NODE_ENV=production
 
 WORKDIR /opt/
-COPY package.json ./
+COPY package.json package-lock.json ./
 RUN npm install -g node-gyp
-RUN npm install --production
-ENV PATH /opt/node_modules/.bin:$PATH
+RUN npm ci --omit=dev
+ENV PATH=/opt/node_modules/.bin:$PATH
 WORKDIR /opt/app
 COPY . .
 RUN npm run build
@@ -23,7 +23,7 @@ WORKDIR /opt/
 COPY --from=build /opt/node_modules ./node_modules
 WORKDIR /opt/app
 COPY --from=build /opt/app ./
-ENV PATH /opt/node_modules/.bin:$PATH
+ENV PATH=/opt/node_modules/.bin:$PATH
 
 RUN chown -R node:node /opt/app
 USER node
